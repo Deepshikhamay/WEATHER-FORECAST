@@ -41,8 +41,9 @@ function AllCities({ weatherData }: Props) {
     <div>
       {/* header */}
       <div className='flex justify-between'>
-        <p className='font-semibold md:text-[35px] text-[30px] uppercase'>Weather
-          <span className='font-semibold ml-4 md:text-[35px] text-[30px] uppercase'>Forecast</span> </p>
+        <p className='block lg:hidden font-semibold md:text-[35px] text-[25px]'>Weather</p>
+        <p className='font-semibold md:text-[35px] text-[25px]  hidden lg:block'>Weather
+          <span className='font-semibold ml-4 md:text-[35px] text-[25px]'>Forecast</span> </p>
         <div className='flex'>
           <input
             type="text"
@@ -51,7 +52,7 @@ function AllCities({ weatherData }: Props) {
             value={searchTerm}
             onChange={e => setSearchTerm(e.target.value)}
           />
-          <button className='rounded-lg border-2 border-blue-500 hover:border-blue-600 bg-blue-500 text-white hover:bg-blue-600 px-2 mx-1 cursor pointer'> search  </button>
+          <button className='rounded-lg border-2 border-blue-500 hover:border-blue-600 bg-blue-500 text-white hover:bg-blue-600 px-2 mx-1 cursor pointer hidden md:block'> search  </button>
         </div>
       </div>
       {/* tables */}
@@ -73,13 +74,13 @@ function AllCities({ weatherData }: Props) {
           <Link 
             to={`/${record.fields.name}`} 
             state={{ recordData: record, country: record.fields.cou_name_en, timezone: record.fields.timezone,}} 
-            className='hover:text-[#4f4f4f]' 
+            className='hover:text-[#4f4f4f] md:text-[16px] text-[12px]' 
             target="_blank" rel="noopener noreferrer"
           >
             {record.fields.name}
           </Link>
-          <div>{record.fields.cou_name_en}</div>
-          <div>{record.record_timestamp}</div>
+          <div className='md:text-[16px] text-[12px]'>{record.fields.cou_name_en}</div>
+          <div className='md:text-[16px] text-[12px]'>{record.record_timestamp}</div>
         </div>
       ))}
 
